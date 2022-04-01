@@ -2,15 +2,23 @@
 
 namespace EventsAndDelegates // Note: actual namespace depends on the project name.
 {
-    public class Program
+    public static class Program
     {
         static void Main(string[] args)
         {
 
             var video = new Video() { Title = "Video 1" };//first we instantiate the video here
-            var videoencoder = new VideoEncoder();
+            var videoEncoder = new VideoEncoder(); //publisher
+            var mailService = new MailService(); //subscriber
+            var messageService = new messageService();
 
-            videoEncoder.Encode(video); //then we instantiate the video encoder and finally we call the encode method, passing the video object.
+
+            videoEncoder.VideoEncoded += mailService.OnvideoEncoded; //reference or pointer to mailService.OnVideoEncoded
+            videoEncoder.VideoEncoded += messageService.OnVideoEncoded;
+            
+            videoEncoder.Encode(video);
+
+
         }
     }
 }

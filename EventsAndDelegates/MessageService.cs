@@ -6,9 +6,7 @@ using System.Threading.Tasks;
 
 namespace EventsAndDelegates
 {
-    public class Video
+    internal class MessageService
     {
-        public string Title { get; set; } //single properties 
-
     }
 }
