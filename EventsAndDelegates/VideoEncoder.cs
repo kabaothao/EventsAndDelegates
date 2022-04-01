@@ -12,7 +12,7 @@ namespace EventsAndDelegates
         // 2. Define an event based on that delegate
         // 3. Raise the event 
 
-        public delegate void VideoEncodedEventHandler(object source, EventArgs args);
+        public delegate void VideoEncodedEventHandler(object source, VideoEventArgs args);
         public event VideoEncodedEventHandler VideoEncoded;
         //To raise an event we need a method that is responsible for that.
 
@@ -25,15 +25,15 @@ namespace EventsAndDelegates
             Console.WriteLine("Encoding Video..."); //log a message to the console
             Thread.Sleep(3000);
 
-            OnVideoEncoded();
+            OnVideoEncoded(video);
         }
 
 
 
-        protected virtual void OnVideoEncoded()
+        protected virtual void OnVideoEncoded(Video video)
         {
             if (VideoEncoded != null)
-                VideoEncoded(this, EventArgs.Empty);
+                VideoEncoded(this, new VideoEventArgs() { Video = video });
         }
     }
 }

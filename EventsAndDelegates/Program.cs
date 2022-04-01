@@ -10,11 +10,11 @@ namespace EventsAndDelegates // Note: actual namespace depends on the project na
             var video = new Video() { Title = "Video 1" };//first we instantiate the video here
             var videoEncoder = new VideoEncoder(); //publisher
             var mailService = new MailService(); //subscriber
-            var messageService = new messageService();
+            var MessageService = new MessageService();
 
 
             videoEncoder.VideoEncoded += mailService.OnvideoEncoded; //reference or pointer to mailService.OnVideoEncoded
-            videoEncoder.VideoEncoded += messageService.OnVideoEncoded;
+            videoEncoder.VideoEncoded += MessageService.OnVideoEncoded;
             
             videoEncoder.Encode(video);
 
